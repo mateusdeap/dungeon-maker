@@ -2,6 +2,7 @@
 
 require_relative "dungeon_maker/version"
 
+require "dungeon_maker/dungeon"
 module DungeonMaker
   def self.new_dungeon(number_of_rooms: 10)
     types = [:trapped, :enchanted, :ordinary]
