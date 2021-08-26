@@ -12,7 +12,7 @@ module DungeonMaker
     types = [:trapped, :enchanted, :ordinary]
     dungeon = Dungeon.new(number_of_rooms)
 
-    dungeon.rooms.each do |room|
+    dungeon.rooms.map! do |room|
       type = types.sample
 
       room = case type
@@ -26,7 +26,7 @@ module DungeonMaker
           Rooms::OrdinaryRoom.new
         end
 
-      room.sides.each do |side|
+      room.sides.map! do |side|
         make_wall = rand() >= 0.5
 
         if make_wall
@@ -55,6 +55,8 @@ module DungeonMaker
             end
         end
       end
+
+      room
     end
 
     dungeon
