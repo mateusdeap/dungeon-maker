@@ -4,6 +4,7 @@ require_relative "dungeon_maker/version"
 
 require "dungeon_maker/dungeon"
 require "dungeon_maker/rooms"
+require "dungeon_maker/doors"
 
 module DungeonMaker
   def self.new_dungeon(number_of_rooms: 10)
@@ -43,13 +44,13 @@ module DungeonMaker
           type = types.sample
           side = case type
             when :trapped
-              TrappedDoor.new
+              Doors::TrappedDoor.new
             when :enchanted
-              EnchantedDoor.new
+              Doors::EnchantedDoor.new
             when :ordinary
-              OrdinaryDoor.new
+              Doors::OrdinaryDoor.new
             else
-              OrdinaryDoor.new
+              Doors::OrdinaryDoor.new
             end
         end
       end
